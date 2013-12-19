@@ -4,7 +4,7 @@ A robust & optimized ES3-compatible polyfill for [the `String.prototype.repeat` 
 
 Other polyfills for `String.prototype.repeat` are available:
 
-* <https://github.com/paulmillr/es6-shim/blob/9c29b1104a264ae312baf7fcc35d622134d6d8f6/es6-shim.js#L129-146> by [Paul Miller](http://paulmillr.com/) (~~[fails 8 tests](https://github.com/paulmillr/es6-shim/issues/164)~~ now passes all tests)
+* <https://github.com/paulmillr/es6-shim/blob/d8c4ec246a15e7df55da60b7f9b745af84ca9021/es6-shim.js#L146-L154> by [Paul Miller](http://paulmillr.com/) (~~[fails 8 tests](https://github.com/paulmillr/es6-shim/issues/164)~~ now passes all tests)
 
 ## Installation
 
