@@ -8,7 +8,7 @@ if (!String.prototype.repeat) {
 		var string = String(this);
 		// `ToInteger`
 		var n = count ? Number(count) : 0;
-		if (isNaN(n)) {
+		if (n != n) { // better `isNaN`
 			n = 0;
 		}
 		// Account for out-of-bounds indices
