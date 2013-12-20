@@ -5,6 +5,7 @@ var assertThrows = assert['throws'];
 require('../repeat.js');
 
 assertEquals(String.prototype.repeat.length, 1);
+assertEquals(String.prototype.propertyIsEnumerable('repeat'), false);
 
 assertEquals('abc'.repeat(), '');
 assertEquals('abc'.repeat(undefined), '');
