@@ -16,9 +16,18 @@ if (!String.prototype.repeat) {
 			if (n < 0 || n == Infinity) {
 				throw RangeError();
 			}
-			var result = '';
-			while (n--) {
-				result += string;
+			if (n == 0) {
+				return '';
+			}
+			var result = string, reps = 1;
+			--n;
+			while (n >= reps) {
+				result += result;
+				n -= reps;
+				reps *= 2;
+			}
+			if (n > 0) {
+				result += result.substring(0, n * string.length);
 			}
 			return result;
 		};
