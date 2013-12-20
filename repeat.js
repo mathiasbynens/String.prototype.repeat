@@ -16,9 +16,6 @@ if (!String.prototype.repeat) {
 			if (n < 0 || n == Infinity) {
 				throw RangeError();
 			}
-			if (n == 0) {
-				return '';
-			}
 			var result = '';
 			while (n--) {
 				result += string;
