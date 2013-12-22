@@ -21,7 +21,9 @@ if (!String.prototype.repeat) {
 				if (n % 2 == 1) {
 					result += string;
 				}
-				string += string;
+				if (n > 1) {
+					string += string;
+				}
 				n >>= 1;
 			}
 			return result;
