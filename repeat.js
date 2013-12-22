@@ -17,8 +17,12 @@ if (!String.prototype.repeat) {
 				throw RangeError();
 			}
 			var result = '';
-			while (n--) {
-				result += string;
+			while (n) {
+				if (n % 2 == 1) {
+					result += string;
+				}
+				string += string;
+				n >>= 1;
 			}
 			return result;
 		};
