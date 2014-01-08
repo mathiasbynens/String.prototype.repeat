@@ -2,6 +2,15 @@
 if (!String.prototype.repeat) {
 	(function() {
 		'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
+		var defineProperty = (function() {
+			// IE 8 only supports `Object.defineProperty` on DOM elements
+			try {
+				var object = {};
+				var $defineProperty = Object.defineProperty;
+				var result = $defineProperty(object, object, object) && $defineProperty;
+			} catch(error) {}
+			return result;
+		}());
 		var repeat = function(count) {
 			if (this == null) {
 				throw TypeError();
@@ -28,8 +37,8 @@ if (!String.prototype.repeat) {
 			}
 			return result;
 		};
-		if (Object.defineProperty) {
-			Object.defineProperty(String.prototype, 'repeat', {
+		if (defineProperty) {
+			defineProperty(String.prototype, 'repeat', {
 				'value': repeat,
 				'configurable': true,
 				'writable': true
