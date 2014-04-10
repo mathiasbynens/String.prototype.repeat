@@ -1,4 +1,4 @@
-/*! http://mths.be/repeat v0.1.0 by @mathias */
+/*! http://mths.be/repeat v0.2.0 by @mathias */
 if (!String.prototype.repeat) {
 	(function() {
 		'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
