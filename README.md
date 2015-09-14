@@ -1,6 +1,6 @@
 # ES6 `String.prototype.repeat` polyfill [![Build status](https://travis-ci.org/mathiasbynens/String.prototype.repeat.svg?branch=master)](https://travis-ci.org/mathiasbynens/String.prototype.repeat)
 
-A robust & optimized ES3-compatible polyfill for [the `String.prototype.repeat` method in ECMAScript 6](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-string.prototype.repeat).
+A robust & optimized ES3-compatible polyfill for [the `String.prototype.repeat` method in ECMAScript 6](http://ecma-international.org/ecma-262/6.0/#sec-string.prototype.repeat).
 
 Other polyfills for `String.prototype.repeat` are available:
 
@@ -14,13 +14,13 @@ In a browser:
 <script src="repeat.js"></script>
 ```
 
-Via [npm](http://npmjs.org/):
+Via [npm](https://www.npmjs.com/):
 
 ```bash
 npm install string.prototype.repeat
 ```
 
-Then, in [Node.js](http://nodejs.org/):
+Then, in [Node.js](https://nodejs.org/):
 
 ```js
 require('string.prototype.repeat');
