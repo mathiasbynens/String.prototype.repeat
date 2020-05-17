@@ -8,7 +8,7 @@ var ToInteger = require('es-abstract/2019/ToInteger');
 
 module.exports = function repeat(count) {
     var O = RequireObjectCoercible(this);
-	var S = ToString(O);
+	var string = ToString(O);
     var n = ToInteger(count);
     // Account for out-of-bounds indices
     if (n < 0 || n == Infinity) throw RangeError();

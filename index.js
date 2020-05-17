@@ -18,4 +18,3 @@ define(boundRepeat, {
 });
 
 module.exports = boundRepeat;
-
