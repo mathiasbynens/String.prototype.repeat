@@ -7,21 +7,21 @@ var ToString = require('es-abstract/2019/ToString');
 var ToInteger = require('es-abstract/2019/ToInteger');
 
 module.exports = function repeat(count) {
-    var O = RequireObjectCoercible(this);
+	var O = RequireObjectCoercible(this);
 	var string = ToString(O);
-    var n = ToInteger(count);
-    // Account for out-of-bounds indices
-    if (n < 0 || n == Infinity) throw RangeError();
+	var n = ToInteger(count);
+	// Account for out-of-bounds indices
+	if (n < 0 || n == Infinity) throw RangeError();
 
-    var result = '';
-    while (n) {
-        if (n % 2 == 1) {
-            result += string;
-        }
-        if (n > 1) {
-            string += string;
-        }
-        n >>= 1;
-    }
-    return result;
+	var result = '';
+	while (n) {
+		if (n % 2 == 1) {
+			result += string;
+		}
+		if (n > 1) {
+			string += string;
+		}
+		n >>= 1;
+	}
+	return result;
 };
