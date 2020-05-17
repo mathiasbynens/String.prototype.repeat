@@ -1,5 +1,7 @@
+version: ~> 1.0
 language: node_js
-node_js:
-  - "0.10"
-  - "0.12"
-  - "4"
+os:
+ - linux
+import:
+ - ljharb/travis-ci:node/all.yml
+ - ljharb/travis-ci:node/pretest.yml

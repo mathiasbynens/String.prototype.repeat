@@ -1,38 +1,44 @@
-var assert = require('assert');
-var assertEquals = assert.equal;
-var assertThrows = assert['throws'];
+'use strict';
 
-require('../repeat.js');
+module.exports = function(repeat, t) {
+	t.test('cast count argument', function(st) {
+		st.equal(repeat('abc'), '');
+		st.equal(repeat('abc', undefined), '');
+		st.equal(repeat('abc', null), '');
+		st.equal(repeat('abc', false), '');
+		st.equal(repeat('abc', NaN), '');
+		st.equal(repeat('abc', 'abc'), '');
+		st.end();
+	});
 
-assertEquals(String.prototype.repeat.length, 1);
-assertEquals(String.prototype.propertyIsEnumerable('repeat'), false);
+	t.test('invalid numeric count', function(st) {
+		st['throws'](function() { repeat('abc', -Infinity); }, RangeError);
+		st['throws'](function() { repeat('abc', -1); }, RangeError);
+		st['throws'](function() { repeat('abc', +Infinity); }, RangeError);
+		st.end();
+	});
 
-assertEquals('abc'.repeat(), '');
-assertEquals('abc'.repeat(undefined), '');
-assertEquals('abc'.repeat(null), '');
-assertEquals('abc'.repeat(false), '');
-assertEquals('abc'.repeat(NaN), '');
-assertEquals('abc'.repeat('abc'), '');
-assertThrows(function() { 'abc'.repeat(-Infinity); }, RangeError);
-assertThrows(function() { 'abc'.repeat(-1); }, RangeError);
-assertEquals('abc'.repeat(-0), '');
-assertEquals('abc'.repeat(+0), '');
-assertEquals('abc'.repeat(1), 'abc');
-assertEquals('abc'.repeat(2), 'abcabc');
-assertEquals('abc'.repeat(3), 'abcabcabc');
-assertEquals('abc'.repeat(4), 'abcabcabcabc');
-assertThrows(function() { 'abc'.repeat(+Infinity); }, RangeError);
+	t.test('valid numeric count', function(st) {
+		st.equal(repeat('abc', -0), '');
+		st.equal(repeat('abc', +0), '');
+		st.equal(repeat('abc', 1), 'abc');
+		st.equal(repeat('abc', 2), 'abcabc');
+		st.equal(repeat('abc', 3), 'abcabcabc');
+		st.equal(repeat('abc', 4), 'abcabcabcabc');
+		st.end();
+	});
 
-assertThrows(function() { String.prototype.repeat.call(undefined); }, TypeError);
-assertThrows(function() { String.prototype.repeat.call(undefined, 4); }, TypeError);
-assertThrows(function() { String.prototype.repeat.call(null); }, TypeError);
-assertThrows(function() { String.prototype.repeat.call(null, 4); }, TypeError);
-assertEquals(String.prototype.repeat.call(42, 4), '42424242');
-assertEquals(String.prototype.repeat.call({ 'toString': function() { return 'abc'; } }, 2), 'abcabc');
+	t.test('nullish this object', function(st) {
+		st['throws'](function() { repeat(undefined); }, TypeError);
+		st['throws'](function() { repeat(undefined, 4); }, TypeError);
+		st['throws'](function() { repeat(null); }, TypeError);
+		st['throws'](function() { repeat(null, 4); }, TypeError);
+		st.end();
+	});
 
-assertThrows(function() { String.prototype.repeat.apply(undefined); }, TypeError);
-assertThrows(function() { String.prototype.repeat.apply(undefined, [4]); }, TypeError);
-assertThrows(function() { String.prototype.repeat.apply(null); }, TypeError);
-assertThrows(function() { String.prototype.repeat.apply(null, [4]); }, TypeError);
-assertEquals(String.prototype.repeat.apply(42, [4]), '42424242');
-assertEquals(String.prototype.repeat.apply({ 'toString': function() { return 'abc'; } }, [2]), 'abcabc');
+	t.test('cast this object', function(st) {
+		st.equal(repeat(42, 4), '42424242');
+		st.equal(repeat({ 'toString': function() { return 'abc'; } }, 2), 'abcabc');
+		st.end();
+	});
+};
