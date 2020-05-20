@@ -11,7 +11,9 @@ module.exports = function repeat(count) {
 	var string = ToString(O);
 	var n = ToInteger(count);
 	// Account for out-of-bounds indices
-	if (n < 0 || n == Infinity) throw RangeError();
+	if (n < 0 || n == Infinity) {
+		throw RangeError('String.prototype.repeat argument must be greater than or equal to 0 and not be Infinity');
+	}
 
 	var result = '';
 	while (n) {
