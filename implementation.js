@@ -12,7 +12,7 @@ module.exports = function repeat(count) {
 	var n = ToInteger(count);
 	// Account for out-of-bounds indices
 	if (n < 0 || n == Infinity) {
-		throw RangeError('String.prototype.repeat argument must be greater than or equal to 0 and not be Infinity');
+		throw RangeError('Invalid count value');
 	}
 
 	var result = '';
